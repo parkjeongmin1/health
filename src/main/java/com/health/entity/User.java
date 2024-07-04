@@ -3,13 +3,10 @@ package com.health.entity;
 import com.health.constant.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
-import org.hibernate.type.internal.ImmutableNamedBasicTypeImpl;
 
 @Entity
 @Table(name = "user")
 @Getter
-@Setter
 public class User {
     @Id
     @Column(name = "user_id")

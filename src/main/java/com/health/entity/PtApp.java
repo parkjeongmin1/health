@@ -2,14 +2,11 @@ package com.health.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "pt_app")
 @Getter
-@Setter
 public class PtApp {
     @Id
     @Column(name = "pt_app_id")
@@ -17,7 +14,7 @@ public class PtApp {
     private Long id;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @JoinColumn(name = "user_id")
     @ManyToOne(fetch = FetchType.LAZY)

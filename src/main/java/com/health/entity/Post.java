@@ -2,14 +2,11 @@ package com.health.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "post")
 @Getter
-@Setter
 public class Post {
     @Id
     @Column(name = "post_id")
@@ -23,7 +20,7 @@ public class Post {
     private String content;
 
     @Column(name = "views")
-    private int views;
+    private int views = 0;
 
     @Column(name = "created_at")
     private LocalDate createdAt;

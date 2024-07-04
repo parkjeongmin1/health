@@ -2,26 +2,22 @@ package com.health.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "comment")
 @Getter
-@Setter
 public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //primary키 생성
     @Column(name = "comment_id")
-    private Long Id;
+    private Long id;
 
     @Column(name = "content", columnDefinition = "longtext")
     private String content;
 
     @Column(name = "created_at")
-    private LocalDate createdAt;
+    private LocalDateTime createdAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")

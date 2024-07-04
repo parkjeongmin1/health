@@ -3,15 +3,12 @@ package com.health.entity;
 import com.health.constant.DayOfWeek;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
-
 import java.time.LocalDate;
 import java.time.LocalTime;
 
 @Entity
 @Table(name = "pt")
 @Getter
-@Setter
 public class Pt {
     @Id
     @Column(name = "pt_id")

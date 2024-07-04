@@ -3,12 +3,10 @@ package com.health.entity;
 import com.health.constant.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
-import lombok.Setter;
 
 @Entity
 @Table(name = "trainer")
 @Getter
-@Setter
 public class Trainer {
     @Id
     @Column(name = "user_id")

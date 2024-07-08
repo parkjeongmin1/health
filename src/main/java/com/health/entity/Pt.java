@@ -1,6 +1,6 @@
 package com.health.entity;
 
-import com.health.constant.DayOfWeek;
+import com.health.enums.DayOfWeek;
 import jakarta.persistence.*;
 import lombok.Getter;
 import java.time.LocalDate;

@@ -1,4 +1,4 @@
-package com.health.constant;
+package com.health.enums;
 
 public enum Gender {
     MAN("남"),WOMAN("여");

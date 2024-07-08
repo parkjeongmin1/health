@@ -1,6 +1,6 @@
 package com.health.entity;
 
-import com.health.constant.Gender;
+import com.health.enums.Gender;
 import jakarta.persistence.*;
 import lombok.Getter;
 

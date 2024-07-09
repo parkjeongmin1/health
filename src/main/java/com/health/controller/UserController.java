@@ -20,7 +20,7 @@ import java.time.LocalDateTime;
 @Controller
 @RequiredArgsConstructor
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
     private final PasswordEncoder passwordEncoder;
 
     //메인페이지
@@ -37,25 +37,25 @@ public class UserController {
     }
 
     //user 회원가입 페이지
-    @GetMapping(value = "/register/user")
+    @GetMapping(value = "/register/user/new")
     public String userRegisterForm(Model model) {
-        UserFormDto userFormDto = UserFormDto.builder().build();
-        model.addAttribute("userFormDto", userFormDto);
+        model.addAttribute("userFormDto", new UserFormDto());
         return "user/userRegister";
     }
 
     //user 회원가입 처리
-    @PostMapping(value = "/register/user/new")
+    @PostMapping(value = "/register/user/newsign")
     public String userRegisterNew(@Valid UserFormDto userFormDto, BindingResult bindingResult, Model model) {
         //@Valid: 유효성을 검증하려는 객체 앞에 붙인다.
         //BindingResult: 유효성 검증 후 결과가 들어있다.
 
         //유효성 검증 에러 발생시 회원가입 페이지로 이동시킴
         if (bindingResult.hasErrors()) return "user/userRegister";
+        System.out.println(userFormDto.getBirth());
 
         try {
-            User user = User.createUser(userFormDto,passwordEncoder);
 
+            User user = User.createUser(userFormDto, passwordEncoder);
             // UserService를 사용하여 회원 등록
             userService.saveUser(user);
 
@@ -64,7 +64,6 @@ public class UserController {
             model.addAttribute("errorMessage", e.getMessage());
             return "user/userRegister";
         }
-        model.addAttribute("userFormDto", new UserFormDto());
         return "redirect:/";
     }
 

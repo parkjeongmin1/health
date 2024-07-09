@@ -28,8 +28,10 @@ public class SecurityConfig {
                 //2. 로그인에 관한 설정
                 .formLogin(formLogin -> formLogin
                         .loginPage("/login/user") // 로그인 페이지 URL
+                        .loginProcessingUrl("/login/user") // 로그인 처리 URL
                         .defaultSuccessUrl("/") // 로그인 성공시 이동할 페이지 URL
                         .usernameParameter("email") // ★로그인시 id로 사용할 파라미터 이름(내 사이트에 맞는걸로)
+                        .passwordParameter("password")
                         .failureUrl("/login/error") // 로그인 실패시 이동할 페이지
                 )
                 //3. 로그아웃에 관한 설정

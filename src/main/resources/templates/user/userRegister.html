@@ -22,7 +22,7 @@
                 <div class="col-md-12">
                     <h2 class="h3 mb-3 text-black">회원가입</h2>
                     <div class="p-3 p-lg-5 border">
-                        <form role="form" action="/register/user/new" method="post" th:object="${userFormDto}">
+                        <form role="form" action="/register/user/newsign" method="post" th:object="${userFormDto}">
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label th:for="userName" class="text-black">이름</label>
@@ -30,11 +30,10 @@
                                     <p class="fieldError" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></p>
                                 </div>
                             </div>
-
                             <div class="form-group row">
                                 <div class="col-md-12">
                                     <label th:for="userEmail" class="text-black">이메일</label>
-                                    <input type="email" class="form-control" placeholder="이메일을 입력해주세요" th:field="*{userEmail}"/>
+                                    <input type="email" class="form-control" placeholder="이메일을 입력해주세요" th:field="*{userEmail}" />
                                     <p class="fieldError" th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}"></p>
                                 </div>
                             </div>
@@ -51,6 +50,7 @@
                                 <div class="col-md-12">
                                     <label th:for="birth" class="text-black">생년월일</label>
                                     <input type="date" class="form-control" placeholder="생년월일을 입력해주세요" th:field="*{birth}"/>
+                                    <p class="fieldError" th:if="${#fields.hasErrors('birth')}" th:errors="*{birth}"></p>
                                 </div>
                             </div>
 
@@ -58,14 +58,14 @@
                                 <div class="col-md-12">
                                     <label class="text-black">성별</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" th:field="*{userGender}" value="MAN" id="genderMale">
-                                        <label class="form-check-label" for="genderMale">
+                                        <input class="form-check-input" type="radio" value="MAN" th:field="*{userGender}">
+                                        <label class="form-check-label" th:for="userGender">
                                             남
                                         </label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" th:field="*{userGender}" value="WOMAN" id="genderFemale">
-                                        <label class="form-check-label" for="genderFemale">
+                                        <input class="form-check-input" type="radio" th:field="*{userGender}" value="WOMAN">
+                                        <label class="form-check-label" th:for="userGender">
                                             여
                                         </label>
                                     </div>

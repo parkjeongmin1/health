@@ -51,7 +51,6 @@ public class UserController {
 
         //유효성 검증 에러 발생시 회원가입 페이지로 이동시킴
         if (bindingResult.hasErrors()) return "user/userRegister";
-        System.out.println(userFormDto.getBirth());
 
         try {
 

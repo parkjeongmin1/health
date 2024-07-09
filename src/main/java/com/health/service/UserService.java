@@ -5,6 +5,7 @@ import com.health.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class UserService {
+public class UserService implements UserDetailsService {
     private final UserRepository userRepository;
 
     //회원가입
@@ -24,12 +25,14 @@ public class UserService {
     //회원 중복체크
     private void DuplicateUser(User user){
         User findUser = userRepository.findByEmail(user.getEmail());
+
         if (findUser != null) {
             throw new IllegalStateException("이미 가입된 이메일 입니다."); // IllegalStateException: 조건이 충족되지 않는 경우
         }
     }
 
-    public UserDetails userDetails(String email) throws UsernameNotFoundException {
+    @Override
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email);
 
         if (user == null) {

@@ -1,4 +1,4 @@
-package com.health.constant;
+package com.health.enums;
 
 public enum DayOfWeek {
      MONDAY("월"),

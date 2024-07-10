@@ -1,12 +1,22 @@
 package com.health.entity;
 
-import com.health.constant.Gender;
+import com.health.dto.UserFormDto;
+import com.health.enums.Gender;
+import com.health.service.UserService;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import org.springframework.security.crypto.password.PasswordEncoder;
+
+import java.time.LocalDate;
+import java.util.Date;
 
 @Entity
 @Table(name = "user")
 @Getter
+@Setter
 public class User {
     @Id
     @Column(name = "user_id")
@@ -22,8 +32,8 @@ public class User {
     @Column(name = "user_email")
     private String email;
 
-    @Column(name = "user_age")
-    private int age;
+    @Column(name = "user_birth")
+    private LocalDate birth;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")

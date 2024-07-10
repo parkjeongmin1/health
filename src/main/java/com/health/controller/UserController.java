@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class UserController {
     private final UserService userService;
-    private final PasswordEncoder passwordEncoder;
+
 
     //메인페이지
     @GetMapping(value = "/")
@@ -53,10 +53,7 @@ public class UserController {
         if (bindingResult.hasErrors()) return "user/userRegister";
 
         try {
-
-            User user = User.createUser(userFormDto, passwordEncoder);
-            // UserService를 사용하여 회원 등록
-            userService.saveUser(user);
+            userService.saveUser(userFormDto);
 
         } catch (IllegalStateException e) {
             // 회원가입이 되어있다면

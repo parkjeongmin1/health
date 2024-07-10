@@ -38,22 +38,4 @@ public class User {
     @Enumerated(EnumType.STRING)
     @Column(name = "user_gender")
     private Gender gender;
-
-
-
-    //JPA에서는 영속성 컨텍스트에 엔티티 객체를 통해 CRUD를 진행하므로 반드시 엔티티 객체로 변경시켜줘야 한다.
-    public static User createUser(UserFormDto userFormDto, PasswordEncoder passwordEncoder) {
-        //패스워드 암호화
-        String password = passwordEncoder.encode(userFormDto.getUserPassword());
-
-        User user = new User();
-
-        user.setPassword(password);
-        user.setEmail(userFormDto.getUserEmail());
-        user.setName(userFormDto.getUserName());
-        user.setBirth(userFormDto.getBirth());
-        user.setGender(userFormDto.getUserGender());
-
-        return user;
-    }
 }

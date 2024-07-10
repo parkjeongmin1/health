@@ -41,7 +41,14 @@ public class SecurityConfig {
                 .exceptionHandling(handling -> handling
                         .authenticationEntryPoint(new CustomAuthenticationEntryPoint())
                 )
-                .rememberMe(Customizer.withDefaults()); // 로그인 이후 세션을 통해 로그인을 유지
+//                .rememberMe(Customizer.withDefaults()); // 로그인 이후 세션을 통해 로그인을 유지
+
+                // 로그인 이후 세션을 통해 로그인을 유지
+                .rememberMe(rememberMe -> rememberMe
+                        .key("uniqueAndSecret")
+                        .tokenValiditySeconds(3600) // 1시간 (3600초)
+                );
+
 
         return httpSecurity.build();
 
